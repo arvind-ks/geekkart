@@ -1,2 +1,2 @@
-# geekkart
-just a casual e-commerce website
+# Geekkart
+Just a casual e-commerce website.

@@ -1,0 +1,1640 @@
+<link rel="stylesheet" href="css/ngActivityIndicator.min.css">
+<script src="common-files-v1.0/js/ngActivityIndicator.min.js"></script>
+<div ng-include src="'../common-files-v1.0/common-htmls/add-profile.html'"></div>
+<div ng-include src="'../common-files-v1.0/common-htmls/uploadprofile.html'"></div>
+<!-- <div ng-include src="'../../../../manage/angular-pages/jobFacetList.html'"></div> -->
+
+
+<style>
+    body {
+        background: #f3f3f3 none repeat scroll 0 0;
+    }
+
+    .jobList, .jobListMini {
+        width: 93%;
+    }
+
+    .jobListMini {
+        border: 2px solid #eaeaea;
+        background-color: #eaeaea;
+    }
+
+    .zwayamFooterloginpage {
+        margin-top: 10px;
+    }
+
+    .p-5 {
+        padding: 0 5px;
+    }
+
+    .mt-10 {
+        margin-top: 10px !important;
+    }
+
+    .jobList {
+        min-height: 67px;
+    }
+
+    .column-left {
+        float: left;
+        width: 40%;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+    }
+
+    .column-right {
+        float: right;
+        width: 30%;
+    }
+
+    .column-center {
+        display: inline-block;
+        width: 30%;
+        padding-left: 20px;
+    }
+
+    .vertical-alignment-helper {
+        display: table;
+        height: 100%;
+        width: 100%;
+    }
+
+    .vertical-align-center {
+        /* To center vertically */
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .circleSectionText {
+        margin-top: 0;
+    }
+
+    .slide-window div > h4 {
+        font-weight: 600;
+    }
+
+    .clear-all-div {
+        float: right !important;
+        text-align: right;
+        left: auto !important;
+        right: 0 !important;
+    }
+
+    .pac-container {
+        z-index: 9999999999 !important;
+    }
+
+    .clearSearch {
+        display: none;
+    }
+
+    .whiteBarActiveJob {
+        cursor: auto !important;
+    }
+
+    .referral-radio-btn {
+        position: relative;
+        right: 4em;
+    }
+
+
+    /* left-slide-in-window */
+
+    .searchForm {
+        position: relative;
+    }
+
+    .customSearchBox {
+        padding: 20px 16px 15px;
+        margin: 0;
+    }
+
+    .mobile-block {
+        display: none;
+    }
+
+    .slide-window {
+        background-color: #fff;
+        width: 100%;
+        height: auto;
+        /* min-height: 100%; */
+        padding: 20px;
+        transition-timing-function: cubic-bezier(.45,.77,.83,.67);
+        overflow-y: auto;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        transition: .5s all;
+    }
+
+
+    tags-input {
+        width: 92.5%;
+        margin-left: 30px!important;
+        margin-top: 0!important;
+        margin-bottom:0!important;
+    }
+        tags-input .host {
+       position: relative;
+       height: auto;
+       display: inline-block;
+       width: 100%;
+       outline: none;
+       
+       }
+        tags-input .tags .tag-item span {
+            font-size: 14px;
+            /* white-space: nowrap;  */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* width: 200px; */
+            /* display:block; */
+            float: left;
+        }
+
+        tags-input .tags .tag-item {
+            height: auto;
+        }
+
+            tags-input .tags .tag-item .remove-button {
+                /*position: relative;
+    top: -1.54em;
+    left: 11.7em;*/
+            }
+
+    .slide-window::-webkit-scrollbar {
+        width: 6px;
+        border-top-left-radius: 3px;
+    }
+
+    .slide-window::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    .slide-window::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+    }
+
+    .slide-window .filter-btn-group {
+        position: relative;
+        left: -10px !important;
+    }
+
+    .slide-window .dropdown-menu.filter-dropdown-menu {
+        left: auto !important;
+    }
+
+    .no-of-jobs {
+        text-align: left;
+        padding-top: 13px;
+        width: auto;
+        float: left;
+        font-size: 13px;
+        padding-left: 10px;
+    }
+
+    .manage-box-circle .c100 {
+        z-index: 0;
+    }
+
+    .dropdown-menu.filter-dropdown-menu {
+        padding: 0;
+        background-color: #F2F3F4;
+        border: 0px;
+        border-radius: 5px !important;
+        margin-top: 7px;
+    }
+
+    .customSearchBox .searchBoxBorder {
+        width: 62%;
+        float: left;
+    }
+
+    /* Find ur Spot CSS  */
+    .find-ur-spot {
+        float: left;
+        text-align: center;
+        font-size: 13px;
+        font-weight: normal;
+        cursor: pointer;
+        transition: .3s all;
+        padding: 0;
+        z-index: 9;
+    }
+
+    .findurspot-resume-upload {
+        padding: 20px 20px;
+        background-color: #ffffff;
+        text-align: center;
+        display: none;
+        position: relative;
+        margin: 0px 0 10px;
+    }
+
+    .findurspot-text h2 {
+        font-family: 'lato',sans-serif;
+        font-weight: normal;
+        font-size: 22px;
+        padding-bottom: 8px;
+    }
+
+    .findurspot-text p {
+        font-size: 14px;
+        font-family: 'lato',sans-serif;
+        margin: 10px 0;
+    }
+
+    .find-ur-spot-box {
+        padding: 15px;
+        margin: 0 66px;
+    }
+
+    .findurspot-upload {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .findrspot-input {
+        width: 72%;
+        float: left;
+        height: 42px !important;
+        border-radius: 0px !important;
+        background-color: #fff !important;
+    }
+
+    .findurspot-upload .upload-file {
+        color: #fff;
+        float: left;
+        width: 18%;
+        text-align: center;
+        background-color: #5491ca;
+        border: none;
+        border-radius: 0;
+        padding: 11px 15px;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    p.subpara {
+        font-size: 11px;
+        font-style: italic;
+        clear: both;
+        text-align: center;
+    }
+
+    .findurspot-close {
+        position: absolute;
+        right: 16px;
+        top: 8px;
+        font-size: 18px;
+        z-index: 9;
+    }
+
+    .find-ur-spot-jobList {
+        border-color: #f3f3f3 #f3f3f3 !important;
+        border-image: none;
+        border-style: solid solid none;
+        border-width: 2px 2px 0;
+        background-color: #fff !important;
+        min-height: 110px;
+        overflow: hidden;
+        padding: 15px 15px 2px;
+        width: 100%;
+    }
+
+    .find-ur-spot-jobTitle {
+        color: #5491ca;
+        font-size: 16px;
+        width: 100%;
+        font-family: MontserratLight;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    .f-ur-s-joblistsection2 {
+        color: #333;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .f-ur-s-joblistsection3 {
+        text-align: right;
+        margin-top: 2px;
+    }
+
+    .reset {
+        color: #fff;
+        padding: 11px 30px;
+        border: none;
+        background-color: #5491ca;
+        font-weight: 600;
+        font-size: 14px;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 5px;
+    }
+
+    .error-msg-spot {
+        color: red;
+        text-align: left;
+        font-size: 13px;
+        margin-left: 6.5%;
+    }
+
+    .no-recommed {
+        font-size: 20px;
+        margin-bottom: 20px;
+        margin-top: 14px;
+    }
+
+    .jobs-referral-program {
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+        font-size: 18px;
+        background: #5491ca;
+        margin-top: 10px;
+        color: #fff;
+    }
+
+    .find-ur-spot img {
+        width: 100%;
+        height: auto;
+    }
+
+    .fa-facebook, .fa-google-plus, .fa-twitter, .fa-linkedin, .fa-envelope, .fa-whatsapp {
+        border-radius: 25px;
+        height: 25px;
+        line-height: 26px;
+        width: 25px;
+        font-size: 12px;
+    }
+
+    .joblistsection2 {
+        padding: 0;
+        text-align: right;
+        width: 100%;
+    }
+
+    .share-on-text {
+        margin-left: 0;
+    }
+
+    .joblistsection1 p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 35%;
+    }
+
+    .joblistsection1, .find-ur-spot-joblistsection.joblistsection1 {
+        width: 100%;
+        display: inline-flex;
+        text-align: left;
+        padding-top: 5px;
+    }
+
+        .joblistsection > p, .find-ur-spot-joblistsection.joblistsection1 p {
+            margin: 0 4px 0 0 !important;
+            border-right: 1px solid #9b9999;
+            padding-right: 4px;
+            font-size: 11px;
+        }
+
+            .joblistsection > p:last-child, .find-ur-spot-joblistsection.joblistsection1 p:last-child {
+                border-right: 0;
+            }
+
+    .jobListMini {
+        height: 36px;
+    }
+
+    .joblistsection3 {
+        display: inline-flex;
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 0 !important;
+    }
+
+    .uploadButton {
+        margin-bottom: 0;
+        margin-right: 5px;
+    }
+
+    .uploadButton {
+        background-color: #5491ca;
+        border: medium none;
+        color: white;
+        height: auto;
+        margin-bottom: 0;
+        min-width: 96px;
+        padding: 12px 6px;
+        font-size: 12px;
+        letter-spacing: 0.3px;
+        line-height: 3px;
+        width: auto;
+    }
+
+    .p-0 {
+        padding: 0;
+    }
+
+    .jobList {
+        padding: 10px 10px 2px;
+        background: #fff;
+    }
+
+    .card-box {
+        background-color: #fff;
+        width: 100%;
+        display: inline-block;
+        padding: 0 !important;
+        margin-top: 10px;
+        padding-bottom: 30px !important
+    }
+
+    .joblist-tabs{
+        margin-top:10px;
+    }
+
+    .recommend{
+        margin-bottom:10px;
+    }
+
+    .recommend .jobList, .recommend .jobListMini {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .recommend .share-job-icons div {
+        padding-bottom: 0 !important;
+    }
+
+    @media only screen and (min-width:1024px) {
+        .pl-15 {
+            padding-left: 15px;
+        }
+    }
+
+    @media only screen and (min-width : 968px) and (max-width : 1024px) {
+        .uploadButton {
+            width: auto;
+        }
+
+        .find-ur-spot {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (max-device-width : 967px) {
+        .find-ur-spot-box {
+            display: inline-block;
+            width: 100%;
+            margin: 0;
+        }
+
+        .mobile-block {
+            display: block;
+        }
+
+        .mobile-none {
+            display: none;
+        }
+
+        .uploadButton {
+            margin-bottom: 5px;
+        }
+
+        .findurspot-close {
+            top: 50px;
+        }
+
+        p.subpara {
+            padding-top: 10px;
+        }
+
+        .findurspot-upload .upload-file, .findrspot-input {
+            width: 100%;
+        }
+
+        .joblistsection1 p {
+            max-width: 100%;
+        }
+
+        .container {
+            width: 95% !important;
+        }
+
+        .p-0 {
+            padding: 0 10px;
+        }
+
+        .jobList {
+            padding: 10px 5px 2px;
+        }
+
+        .joblistsection.joblistsection3 {
+            margin-top: 7px !important;
+        }
+
+        .mt-10 {
+            margin-bottom: 10px !important;
+        }
+
+        .jobList, .jobListMini {
+            width: 94%;
+            margin: 0 10px;
+        }
+
+        .recommend .share-job-icons {
+            margin-top: 0;
+        }
+
+        .recommend .share-job-icons {
+            margin-top: 0;
+        }
+
+        .share-job-icons div {
+            padding-bottom: 0 !important;
+        }
+
+        .mobileView-share-job-icons {
+            float: left !important;
+            margin: 5px 0px 0px !important;
+        }
+
+        .customSearchBox {
+            padding: 0;
+            margin: 0;
+            margin-top: 10px;
+        }
+
+            .customSearchBox .searchBoxBorder, .no-of-jobs {
+                width: 100%;
+                margin-left: 0;
+            }
+
+        .d-sm-iblock {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .joblistsection1, .joblistsection3, .find-ur-spot-joblistsection.joblistsection1 {
+            display: inline-block;
+        }
+
+            .joblistsection1 p, .find-ur-spot-joblistsection.joblistsection1 p {
+                border: none;
+            }
+
+        .jobListMini {
+            height: auto !important;
+            display: inline-block;
+        }
+
+        .joblistsection2 {
+            padding: 0 0;
+        }
+    }
+    
+@media (min-width: 480px){
+	#bulkUpload .modal-dialog {
+	    width: 80% !important;
+	    margin: 0 auto !important;
+	    margin-top: 4% !important;
+	}
+}
+#bulkUpload iframe{
+	border: 0; 
+	height:550px;
+	width: 100%;
+}
+.whiteBarThree {
+    top: 0;
+    left: 0;
+    background-color: white;
+    border-right: 2px solid #dadada;
+    text-align: center;
+    padding: 15px 10px;
+    cursor: pointer;
+}
+.whiteBarThree:last-child{
+    border-right: 0px;
+}
+@media(max-width: 768px){
+.whiteBarThree {
+top: 0;
+left: 0;
+background-color: white;
+border-bottom: 2px solid #dadada;
+text-align: center;
+padding: 15px 10px;
+cursor: pointer;
+}
+}
+.whiteBarThreeIjp {
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: auto;
+    background-color: white;
+    float: left;
+    border-right: 2px solid #dadada;
+    text-align: center;
+    padding: 15px 10px;
+    cursor: pointer;
+}
+.whiteBarThreeIjp:last-child{
+    border-right: 0px;
+}
+.BarImageDiv{
+    width: 50%;
+    float: left;
+    padding-left: 15px;
+}
+.BarContentDiv{
+    width: 50%;
+    float: left;
+    padding-right: 15px;
+}
+@media(max-width: 991px){
+    .whiteBarThreeIjp {
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: auto;
+    background-color: white;
+    float: left;
+    border-right: 2px solid #dadada;
+    border-bottom: 2px solid #F3F3F3;
+    text-align: center;
+    padding: 15px 10px;
+    cursor: pointer;
+}
+}
+@media(max-width: 600px){
+.whiteBarThreeIjp {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    float: left;
+    border-bottom: 2px solid #F3F3F3;
+    text-align: center;
+    padding: 15px 10px;
+    cursor: pointer;
+}
+}
+.err-message{
+	margin-top: 5px;
+    color: red;
+    display: block;
+    line-height: 100%;
+    text-align :left;
+}
+@media(min-width: 991px){
+    .padding-l-0{
+        padding-left: 0px;
+    }
+    .padding-r-0{
+        padding-right: 0px;
+    }
+
+}
+.sp-t3{
+    position: relative;
+    margin-left: 0px;
+    margin-top: 0px;
+    top: 300px;
+    
+}
+#search.ng-not-empty{
+    padding-right: 45px;
+}
+#search.ng-not-empty:focus{
+    padding-right: 12px;
+}
+</style>
+<div ng-include src="'template.html'"></div>
+<div data-ng-init="init()"></div>
+<!-- Modal - bulk Upload -->
+       <div id="bulkUpload" class="modal fade n-modal MinMax-popup" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="withoutmodalheader-actionBtn">
+                <button type="button" id="closeBulkUpload" class="close" data-dismiss="modal"></button>
+           </div>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body modal-body-iframe">
+                    <iframe src="" class="no-border w-100 iframe" id="iFrame1" scrolling="yes" allowfullscreen></iframe>
+                </div>
+                <!--  <div class="modal-footer">
+                    <button type="button" class="waves-effect waves-light btn-success btn" data-dismiss="modal">Close</button>
+                </div> -->
+            </div>
+
+        </div>
+    </div>
+
+<div class="container p-0" style="width:88%" ng-controller="jobListCommonCtrlForVendorAndReferral" ng-init="searchJobServiceCallEs(0);getReferralMappingER();">
+     <div ng-if="refButtonSelected == true" ng-activity-indicator="SpinnerDark" class="dialog-loading-wrapper"></div>
+
+    <div class="row main-row mt-75" style="background-color: white;">
+
+         <!-- IJP tab -->
+
+         <div ng-show="tabName==='ijpa'">
+            <div class="whiteBarThreeIjp whiteBarActiveJob" ng-click="activeJobsIjp()">
+                <div class="BarImageDiv">
+                <img src="images/briefcase.png" alt="" height="50" width="50">
+            </div>
+            <div class="BarContentDiv">
+                <div class="whiteBarNumber" ng-click="activeJobsIjp()">{{noOfJobs}}</div>
+                <div class="whiteBarText text-capitalize">Active {{$parent.referralMappings.uiTermMappings.jobs}}</div>
+            </div>
+            </div>
+            <div class="whiteBarThreeIjp" ng-click="ijpApplies()">
+                <div class="BarImageDiv">
+                <img src="images/file.png" alt="" height="50" width="50">
+            </div>
+            <div class="BarContentDiv">
+                <div class="whiteBarNumber">{{dashboardDetails.applications}}</div>
+                <div class="whiteBarText">Applications</div>
+            </div>
+            </div>
+            <div class="whiteBarThreeIjp" ng-click="ijpshortlistedList()">
+                <div class="BarImageDiv">
+                <img src="images/user.png" alt="" height="50" width="50">
+            </div>
+            <div class="BarContentDiv">
+                <div class="whiteBarNumber">{{dashboardDetails.shortlisted}}</div>
+                <div class="whiteBarText">Shortlisted</div>
+            </div>
+            </div>
+            <div class="whiteBarThreeIjp" ng-click="ijpofferedList()">
+                <div class="BarImageDiv">
+                <img src="images/letter.png" alt="" height="50" width="50">
+            </div>
+            <div class="BarContentDiv">
+                <div class="whiteBarNumber">{{dashboardDetails.offered}}</div>
+                <div class="whiteBarText">Offered</div>
+            </div>
+            </div>
+            <div class="whiteBarThreeIjp" ng-click="ijpjoinsList()">
+                <div class="BarImageDiv">
+                <img src="images/handshake.png" alt="" height="50" width="50">
+            </div>
+            <div class="BarContentDiv">
+                <div class="whiteBarNumber">{{dashboardDetails.joins}}</div>
+                <div class="whiteBarText">Joins</div>
+            </div>
+            </div>
+        </div>
+ <!-- Referral -->
+
+                <div  ng-hide="tabName==='ijpa'">
+            <div class="col-md-4 col-lg-2 col-sm-4 whiteBarThree whiteBarActiveJob" ng-click="activeJobs()">
+                <div class="row">
+                    <div class="col-md-6 padding-r-0">
+                        <img src="images/briefcase.png" alt="" height="50" width="50">
+                    </div>
+                    <div class="col-md-6 padding-l-0">
+                        <div class="whiteBarNumber" ng-click="activeJobs()">{{noOfJobs}}</div>
+                    <div class="whiteBarText text-capitalize">Active {{$parent.referralMappings.uiTermMappings.jobs}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-2 col-sm-4 whiteBarThree" ng-click="allApplications()">
+                <div class="row">
+                    <div class="col-md-6 padding-r-0">
+                        <img src="images/file.png" alt="" height="50" width="50">
+                    </div>
+                    <div class="col-md-6 padding-l-0">
+                        <div class="whiteBarNumber">{{dashboardDetails.applications}}</div>
+                    <div class="whiteBarText" ng-show="moduleName == 'Referral'">Applications</div>
+                    <div class="whiteBarText" ng-show="moduleName == 'partner'">Profiles</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-2 col-sm-4 whiteBarThree" ng-if = "dashboardDetails.qualityProfiles != null" ng-click="qualityProfiles()">
+                <div class="row">
+                    <div class="col-md-6 padding-r-0">
+                        <img src="images/users.png" alt="" height="50" width="50">
+                    </div>
+                    <div class="col-md-6 padding-l-0">
+                        <div class="whiteBarNumber">{{dashboardDetails.qualityProfiles}}</div>
+                    <div class="whiteBarText">Quality Profiles</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-2 col-sm-4 whiteBarThree" ng-click="shortlistedList()">
+                <div class="row">
+                    <div class="col-md-6 padding-r-0">
+                        <img src="images/user.png" alt="" height="50" width="50">
+                    </div>
+                    <div class="col-md-6 padding-l-0">
+                        <div class="whiteBarNumber" ng-click="activeJobs()">{{dashboardDetails.shortlisted}}</div>
+                    <div class="whiteBarText">Shortlisted</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-2 col-sm-4 whiteBarThree" ng-click="offeredList()">
+                <div class="row">
+                    <div class="col-md-6 padding-r-0">
+                        <img src="images/letter.png" alt="" height="50" width="50">
+                    </div>
+                    <div class="col-md-6 padding-l-0">
+                        <div class="whiteBarNumber" ng-click="activeJobs()">{{dashboardDetails.offered}}</div>
+                    <div class="whiteBarText">Offered</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-2 col-sm-4 whiteBarThree" ng-click="joinsList()">
+                <div class="row">
+                    <div class="col-md-6 padding-r-0">
+                        <img src="images/handshake.png" alt="" height="50" width="50">
+                    </div>
+                    <div class="col-md-6 padding-l-0">
+                        <div class="whiteBarNumber" ng-click="activeJobs()">{{dashboardDetails.joins}}</div>
+                    <div class="whiteBarText">Joins</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 joblist-tabs p-0">
+            <div ng-show="enableFindYourSpot && moduleName == 'Referral' && tabName != 'ijpa' || ijpEnableFindYourSpot  && tabName==='ijpa' && moduleName == 'Referral' " class="find-ur-spot col-md-12" ng-click="findurSpot()">
+                <img src="{{bannerForfindurSpot}}" class="mobile-none" />
+                <img src="{{bannerForfindurSpotMobile}}" class="mobile-block" />
+            </div>
+            <!--Find ur Spot -->
+            <div class="findurspot-resume-upload col-md-12 p-0 clearfix" id="findurspot-div">
+                <div class="find-ur-spot-box clearfix">
+                    <div class="findurspot-close">
+                        <i class="fa fa-times" aria-hidden="true" ng-click="findurSpot()"></i>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="findurspot-text">
+                            <!--<h2>Intelligent Job Recommendations  </h2>-->
+                            <p>Please upload the referral resume and let's find the best opportunities</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="findurspot-upload clearfix">
+                            <input type="text" size="50" ng-model="fileName" id="filename"
+                                   name="filename" class="form-control findrspot-input" disabled="">
+                            <label for="fileUploadReferral" id="title" class="upload-file">Upload</label>
+                            <input type="file" name="fileUploadReferral" value="test"
+                                   style="display: none;" ng-model="file" id="fileUploadReferral"
+                                   onchange="angular.element(this).scope().setFileNames(this); angular.element(this).scope().submitResume(this);"
+                                   onclick="this.value=null;">
+                            <button type="submit" class="reset" ng-click="resetRecommendations()">Reset</button>
+                        </div>
+                        <p class="subpara">For best results, upload *.doc/*.docx/*.pdf/*.txt format files only (File size should be &lt;= 2MB)</p>
+                    </div>
+                    <div ng-show="filetype === 'invalid'" class="error-msg-spot">{{filetypeInvalidErr}}</div>
+                    <div ng-show="!fileSizeValidation" class="error-msg-spot">{{fileSizeExceededErr}}</div>
+                    <div ng-show="resumeSubmitted" id="jobrecommendation-div" class="no-recommed">
+                        <div ng-if="recommendJobs.length == 0">{{noRecommendationMsg}}</div>
+                    </div>
+
+
+
+                    <div ng-repeat="data in recommendJobs" ng-if="recommendJobs.length > 0" class="col-md-12 recommend">
+                        <div class="jobList">
+                            <div class="col-lg-6 col-md-6 p-0 text-left">
+                                <img ng-if="data.featuredJob==1" class="bookmark" src="images/bookmark.png" />
+                                <div class="jobTitle" ng-show="moduleName == 'Referral'">
+                                    <a href="#/viewjob/{{data.id}}/home">
+                                        <span style="text-transform: capitalize; cursor:pointer;">Job #{{data.jobCode}}, {{data.jobTitle}} </span>
+                                    </a>
+                                    <span class="ng-binding" ng-click="viewJobPageNewTab(data.id)"> <img src="images/newtab.png" data-toggle="tooltip" title="Open New Tab" style="max-width: 20px;position: relative;top: -2px;" class="resume-icons-download"></span>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 p-0">
+                                <div class="joblistsection joblistsection3">
+                                    <div ng-controller="bulkController" ng-show="moduleName == 'Referral' && tabName != 'ijpa' ">
+                                        <button ng-if="enableBulkUploadReferral == true" class="uploadButton" type="button" ng-click="showModalPopup(loginManageURL+'applies/',data.id);" data-toggle="modal">
+                                            Bulk Upload
+                                        </button>
+                                    </div>
+                                    <div ng-controller="addProfileController" ng-show="moduleName == 'Referral' && tabName != 'ijpa'">
+                                        <button class="uploadButton" type="button" ng-click='addProfilePopup(data.id , data.jobTitle, data.yrsOfExperience,data.location ,"employeeReferral");' data-toggle="modal">
+                                            Refer a friend
+                                        </button>
+                                    </div>
+                                    <button ng-controller="addProfileController" ng-show="moduleName == 'Referral' && tabName == 'ijpa'" class="uploadButton" type="button"
+                                        ng-click='addIJPProfilePopup(data.id , data.jobTitle, data.yrsOfExperience,data.location,data.IJPtemplate,"ijp");' data-toggle="modal">
+                                    Apply
+                                </button>
+                                </div>
+                            </div>
+                            <div class="col-md-12 p-0">
+                                <div class="joblistsection joblistsection1 text-left">
+                                    <p><span>Location : </span> <span title="{{data.location}}"> {{data.location}} </span></p>
+                                    <p ng-show="data.yrsOfExperience"><span>Experience : </span> <span title="{{data.yrsOfExperience}}"> {{data.yrsOfExperience}} </span></p>
+                                    <p><span>Posted : </span> <span title="{{data.createDate | date: 'dd-MMMM-yyyy'}}"> {{data.createDate | date: 'dd-MMMM-yyyy'}} </span></p>
+                                    <p ng-if="data.hiringManager"><span>Hiring Manager : </span> <span title="{{data.hiringManager}}"> {{data.hiringManager}} </span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-show="moduleName == 'Referral'" class="jobListMini">
+                            <div class="col-md-8">
+                                <div class="share-on-text" ng-show="data.jobVisibiltyLevel !='P'">
+                                    Share On:
+                                </div>
+                                <div style="color: grey;" class="share-job-icons mobileView-share-job-icons" ng-show="data.jobVisibiltyLevel !='P'">
+
+                                    <div style="width: 35px; float: left; text-align: center;padding-bottom: 8px;">
+                                        <a class="custom-thm1-outline"
+                                           custom-url="http://{{careerSiteURL}}/#!/job-view/{{data.jobUrl}}/?source=EmployeeReferral&subSource=facebookShare&ref={{uuid}}"
+                                           social-facebook><i class="fa fa-facebook"></i></a>
+                                    </div>
+                                    <div style="width: 35px; float: left; text-align: center;padding-bottom: 8px;">
+                                        <a class="custom-thm1-outline"
+                                           status="{{data.jobTitle}} - http://{{careerSiteURL}}/#!/job-view/{{data.jobUrl}}/?source=EmployeeReferral&subSource=share-twitter&ref={{uuid}}"
+                                           social-twitter><i class="fa fa-twitter"></i></a>
+                                    </div>
+                                    <div style="width: 35px; float: left; text-align: center;padding-bottom: 8px;">
+                                        <a class="custom-thm1-outline"
+                                           custom-url="http://{{careerSiteURL}}/#!/job-view/{{data.jobUrl}}/?source=EmployeeReferral&subSource=share-linkedin&ref={{uuid}}"
+                                           social-linkedin><i class="fa fa-linkedin"></i></a>
+                                    </div>
+                                    <div style="width: 35px; float: left; text-align: center;padding-bottom: 8px;">
+                                        <a href="" class="custom-thm1-outline" class="custom-email-img"
+                                           ng-click="sendEmail(data.id,true);" data-target="#popularizeShareJobEmailPopUp" data-toggle="modal"><i title="Mail" class="fa fa-envelope"></i></a>
+                                    </div>
+
+                                    <div class="whatsapp-share" style="width: 35px; float: left; text-align: center;padding-bottom: 8px;"
+                                         bind-html-compile="data.widget">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="joblistsection joblistsection2 mt-10" ng-show="moduleName == 'Referral' && tabName != 'ijpa'">
+                                    <p ng-if="referralSuggestionsNewArray[data.id]==null || referralSuggestionsNewArray[data.id]==''" style="margin-bottom: 5px;margin-left: 30px;">0 Referrals so far</p>
+                                    <p ng-if="referralSuggestionsNewArray[data.id] !=null && referralSuggestionsNewArray[data.id] !='' && referralSuggestionsNewArray[data.id] < 2" style="margin-bottom: 5px;margin-left: 30px;">{{referralSuggestionsNewArray[data.id]}} Referral so far</p>
+                                    <p ng-if="referralSuggestionsNewArray[data.id] !=null && referralSuggestionsNewArray[data.id] !='' && referralSuggestionsNewArray[data.id] >= 2" style="margin-bottom: 5px;margin-left: 30px;">{{referralSuggestionsNewArray[data.id]}} Referrals so far</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 p-0 w-partner-100">
+            <div class="card-box col-md-12 p-0">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="jobs-referral-program" ng-show="jobFilterCriteria.configurationName">
+                                <span>
+                                    Showing {{noOfJobs}} job<span ng-show="noOfJobs > 1">s</span> from {{jobFilterCriteria.configurationName}} Referral Program
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="searchForm clearfix contact-form customSearchBox" method="POST" 
+                                  ng-submit="searchForJob();">
+
+                                <div class="input-group searchBoxBorder">
+                                    <input ng-change = "setBooleanForSearchText()" style="height: 40px; border-radius: 0;font-family: MontserratUltraLight; font-size: 12px;"
+                                           type="text" class="form-control" placeholder="Enter Job Title or Location to begin searching" ng-disabled="disableSearch"
+                                           id="search" name="search" ng-model="jobFilterCriteria.searchTxt">
+                                    <a class="clearSearch" ng-click="clearSearch();" style="display: none;">
+                                        <img src="images/remove.png" />
+                                    </a>
+
+                                    <div class="input-group-btn responsive-search">
+                                        <button class="btn btn-default ref-custom-btn" ng-disabled="disableSearch" type="submit">Search</button>
+                                    </div>
+                                </div>
+
+                                <div ng-if = "!searchTextMaxLimitReached && !searchTextLengthLimitReached" class="no-of-jobs">{{noOfJobs}} Job<span ng-show="noOfJobs > 1">s</span> Found</div>
+                                <div class="col-md-12 err-message" ng-if = "jobFilterCriteria.searchTxt.length>0 && searchTextMaxLimitReached" class="no-of-jobs"><span> Please enter search text within 32 words</span> </div>
+                                <div class="col-md-12 err-message" ng-if = "jobFilterCriteria.searchTxt.length>0 && searchTextLengthLimitReached" class="no-of-jobs"><span> Number of letters in a single word cannot be more than 50</span> </div>
+                                
+                            </form>
+                        </div>
+                        <!--<div class="col-md-12">
+                            <div style="position:relative">
+                                <input type="checkbox" name="slide-button" id="slide-button" />
+                                <label ng-if="isFilterEnable==true && jobFacetConfig.loadfacets.length>0" for="slide-button"></label>
+
+                            </div>
+                        </div>-->
+                    </div>
+
+
+                    <div class="row" ng-show="selectedFilterTags.length>0">
+                        <tags-input id="applyListTag" min-length="1" class="CommonTaglisting"
+                                    ng-model="selectedFilterTags" ng-keydown="blockChartTags($event)"
+                                    on-tag-removed="selectedTagRemoved($tag)" style="margin-left: 52px; margin-top: 2px; margin-bottom: -21px;">
+                        </tags-input>
+                    </div>
+                </div>
+                <!-- <div ng-show="moduleName == 'Referral'" class="row">
+                    <div class="col-md-6">
+                        <div style="margin-left: 3.1em;">{{noOfJobs}} Job<span ng-show = "noOfJobs > 1">s</span> Found</div>
+                    </div>
+                    <div class="col-md-6 text-right referral-radio-btn" >
+                                     <label class="radio-inline">
+                                        <input type="radio" name="optradio" ng-checked="radioBtnForOpen == true" ng-click="radioButtonStatusFilterChanged('0')" style="margin-top: 2px; margin-right: 3px;">All Jobs
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio" ng-checked="radioBtnForHidden == true" ng-click="radioButtonStatusFilterChanged('1')" style="margin-top: 2px; margin-right: 3px;">ER enabled
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optradio" ng-checked="radioBtnForClosed == true" ng-click="radioButtonStatusFilterChanged('2')" style="margin-top: 2px; margin-right: 3px;">IJP enabled
+                                    </label>
+
+                                </div>
+                </div> -->
+<div ng-if="refButtonSelected == false" ng-activity-indicator="SpinnerDark" class="dialog-loading-wrapper sp-t3"></div>
+                <div ng-repeat="data in job" ng-if="job.length > 0">
+	
+                    <div class="jobList">
+                        <img ng-if="data.featuredJob==1" class="bookmark" src="images/bookmark.png" />
+                        <div class="col-lg-6 col-md-6 p-0 text-left">
+                            
+                            <div class="jobTitle" ng-show="moduleName == 'Referral' && tabName==='ijpa'">
+                                <a href="#/viewjob/{{data.id}}/home?source=ijp">
+                                    <span style="text-transform: capitalize; cursor:pointer;">Job #{{data.newJobCode}}, {{data.jobTitle}} </span>
+                                </a>
+                                <span class="ng-binding" ng-click="viewJobPageNewTabijp(data.id)"> <img src="images/newtab.png" data-toggle="tooltip" title="Open New Tab" style="max-width: 20px;position: relative;top: -2px;" class="resume-icons-download"></span>
+                            </div>
+
+                            <div class="jobTitle" ng-show="moduleName == 'Referral' && tabName !='ijpa'">
+                                <a href="#/viewjob/{{data.id}}/home?source=refer">
+                                    <span style="text-transform: capitalize; cursor:pointer;">Job #{{data.newJobCode}}, {{data.jobTitle}} </span>
+                                </a>
+                                <span class="ng-binding" ng-click="viewJobPageNewTabrefer(data.id)"> <img src="images/newtab.png" data-toggle="tooltip" title="Open New Tab" style="max-width: 20px;position: relative;top: -2px;" class="resume-icons-download"></span>
+                            </div>
+
+                            <div class="jobTitle" ng-show="moduleName == 'partner'">
+                                <span style="text-transform: uppercase; cursor:pointer;" ng-click="viewJobPage(data.id)">Job #{{data.newJobCode}}, {{data.jobTitle}} </span>
+                                <span class="ng-binding" ng-click="viewJobPageNewTab(data.id)"> <img src="images/newtab.png" data-toggle="tooltip" title="Open New Tab" style="max-width: 20px;position: relative;top: -2px;" class="resume-icons-download"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 p-0">
+                            <div class="joblistsection joblistsection3">
+                                <div ng-hide="tabName==='ijpa'" ng-controller="bulkController" ng-if="moduleName == 'Referral' ">
+                                    <button ng-if="enableBulkUploadReferral == true" class="uploadButton" type="button" ng-click="showModalPopup(loginManageURL+'applies/',data.id);" data-toggle="modal">
+                                        Bulk Upload
+                                    </button>
+                                </div>
+                                <div ng-controller="bulkController" ng-if="moduleName == 'partner'">
+                                    <button ng-if="enableBulkUpload == true" class="uploadButton" type="button" ng-click="showModalPopup(loginManageURL+'applies/',data.id);" data-toggle="modal">
+                                        Bulk Upload
+                                    </button>
+                                </div>
+                                <button ng-hide="tabName != 'ijpa'" ng-controller="addProfileController" ng-if="subModuleName !='CandidateReferral' && moduleName == 'Referral' && data.ijpEnabled==true" class="uploadButton" type="button"
+                                        ng-click='addIJPProfilePopup(data.id , data.jobTitle, data.yrsOfExperience,data.location,data.IJPtemplate,"ijp");'>
+                                    Apply
+                                </button>
+                                <div ng-hide="tabName==='ijpa' || moduleName == 'partner'" ng-controller="addProfileController" ng-show="moduleName == 'Referral' && data.isEmployeeReferralEnabled == true">
+                                    <button class="uploadButton" type="button" ng-click='addProfilePopup(data.id , data.jobTitle, data.yrsOfExperience,data.location ,"employeeReferral");' data-toggle="modal">
+                                        Refer a friend
+                                    </button>
+                                </div>
+                                <div ng-controller="addProfileController" ng-show="moduleName == 'partner'">
+                                    <button class="uploadButton" type="button" ng-click='addProfilePopup(data.id , data.jobTitle, data.yrsOfExperience,data.location ,"vendor");' data-toggle="modal">
+                                        Upload Profile
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 p-0">
+                            <div class="joblistsection joblistsection1">
+                                <p><span>Location : </span> <span title="{{data.location}}"> {{data.location}} </span></p>
+                                <p ng-show="data.yrsOfExperience"><span>Experience : </span> <span title="{{data.yrsOfExperience}}"> {{data.yrsOfExperience}} </span></p>
+                                <p><span>Posted : </span> <span title="{{data.createdDate | date: 'dd-MMMM-yyyy'}}"> {{data.createdDate | date: 'dd-MMMM-yyyy'}} </span></p>
+                                <p ng-if="data.hiringManager && moduleName == 'Referral'"><span>Hiring Manager : </span> <span title="{{data.hiringManager}}"> {{data.hiringManager}} </span></p>
+                                <p ng-repeat="obj in data.jobcolList">
+                                    {{obj.rolCode}} : <span title="{{obj.emailId}}">{{obj.emailId}}</span>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div ng-show="moduleName == 'Referral'" class="jobListMini">
+                        <div class="col-md-8">
+                            <div class="share-on-text" ng-show="data.isEmployeeReferralEnabled == true && toggleijp == 'no' && data.jobVisibiltyLevel !='P'">
+                                Share On:
+                            </div>
+                            <div style="color: grey;" class="share-job-icons mobileView-share-job-icons" ng-show="data.isEmployeeReferralEnabled == true && toggleijp == 'no' && data.jobVisibiltyLevel !='P'">
+
+                                <div style="width: 35px; float: left; text-align: center;padding-bottom: 8px;">
+                                    <a class="custom-thm1-outline"
+                                       custom-url="http://{{careerSiteURL}}/#!/job-view/{{data.jobUrl}}/?source=EmployeeReferral&subSource=facebookShare&ref={{uuid}}"
+                                       social-facebook><i class="fa fa-facebook"></i></a>
+                                </div>
+                                <div style="width: 35px; float: left; text-align: center;padding-bottom: 8px;">
+                                    <a class="custom-thm1-outline"
+                                       status="{{data.jobTitle}} - http://{{careerSiteURL}}/#!/job-view/{{data.jobUrl}}/?source=EmployeeReferral&subSource=share-twitter&ref={{uuid}}"
+                                       social-twitter><i class="fa fa-twitter"></i></a>
+                                </div>
+                                <div style="width: 35px; float: left; text-align: center;padding-bottom: 8px;">
+                                    <a class="custom-thm1-outline"
+                                       custom-url="http://{{careerSiteURL}}/#!/job-view/{{data.jobUrl}}/?source=EmployeeReferral&subSource=share-linkedin&ref={{uuid}}"
+                                       social-linkedin><i class="fa fa-linkedin"></i></a>
+                                </div>
+                                <div style="width: 35px; float: left; text-align: center;padding-bottom: 8px;">
+                                    <a href="" ng-if="data.isEmployeeReferralEnabled" class="custom-thm1-outline" class="custom-email-img"
+                                       ng-click="sendEmail(data.id,data.isEmployeeReferralEnabled);" data-target="#popularizeShareJobEmailPopUp" data-toggle="modal"><i title="Mail" class="fa fa-envelope"></i></a>
+                                </div>
+
+                                <div class="whatsapp-share" style="width: 35px; float: left; text-align: center;padding-bottom: 8px;"
+                                     bind-html-compile="data.widget">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="joblistsection joblistsection2 mt-10" ng-show="moduleName == 'Referral'" ng-hide="tabName==='ijpa'">
+                                <p ng-if="referralSuggestionsNewArray[data.id]==null || referralSuggestionsNewArray[data.id]==''" style="margin-bottom: 5px;margin-left: 30px;">0 Referrals so far</p>
+                                <p ng-if="referralSuggestionsNewArray[data.id] !=null && referralSuggestionsNewArray[data.id] !='' && referralSuggestionsNewArray[data.id] < 2" style="margin-bottom: 5px;margin-left: 30px;">{{referralSuggestionsNewArray[data.id]}} Referral so far</p>
+                                <p ng-if="referralSuggestionsNewArray[data.id] !=null && referralSuggestionsNewArray[data.id] !='' && referralSuggestionsNewArray[data.id] >= 2" style="margin-bottom: 5px;margin-left: 30px;">{{referralSuggestionsNewArray[data.id]}} Referrals so far</p>
+                                <!-- <p ng-show="moduleName == 'Referral' && ERPointsEnable == 'Y'" ><img src="images/coins.png"  style="margin-right: 6px; float: left; margin-top: -7px;"/> Earn {{data.applyWithRelevantpoints}} points by referring friend</p> -->
+                            </div>
+                            <div class="joblistsection joblistsection2" ng-show="moduleName == 'partner'">
+                                <p ng-if="referralSuggestionsNewArray[data.id]==null || referralSuggestionsNewArray[data.id]==''" style="margin-bottom: 5px;margin-left: 30px;">0 Referrals so far</p>
+                                <p ng-if="referralSuggestionsNewArray[data.id] !=null && referralSuggestionsNewArray[data.id] !='' && referralSuggestionsNewArray[data.id] < 2" style="margin-bottom: 5px;margin-left: 30px;">{{referralSuggestionsNewArray[data.id]}} Referral so far</p>
+                                <p ng-if="referralSuggestionsNewArray[data.id] !=null && referralSuggestionsNewArray[data.id] !='' && referralSuggestionsNewArray[data.id] >= 2" style="margin-bottom: 5px;margin-left: 30px;">{{referralSuggestionsNewArray[data.id]}} Referrals so far</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal fade  n-modal" id="popularizeShareJobEmailPopUp" tabindex='-1'
+                     role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog lg-modal">
+                        <div class="modal-content">
+
+                            <!-- Modal Body -->
+                            <form class="form-horizontal" method="POST" name="shareJobEmailForm" role="form" ng-submit="sendInviteCandidatesEmail('E');">
+                            <div class="modal-body sharejob-body">
+                                <div class="col-md-12 p-0">
+			                        <label class="shareJobEmailLabel" >To:</label>
+
+                                <tags-input min-length="2" placeholder="Enter comma separated emails" ng-model="jobsPopularizeTags" on-tag-added="removeErrMsg($tag)"
+                                            class="shareJobEmailTagInput"></tags-input>
+                                 <div class="col-md-12 p-0">
+                                  <span class="error" ng-show="emailErrInvitePopularize == true">
+                                    Please enter at least one email
+                                </span>
+
+                                <span class="error"ng-show="errEmailId">
+                                    Please enter a valid email address
+                                </span>
+                                </div>
+                                 <div class="shareJobEmailSeperator"></div>
+                                 </div>
+                                <div class="col-md-12 p-0">
+			                     <label class="shareJobEmailLabel" >From:</label>
+                                <input type="text" ng-model="popularizeShareJobEmailFrom" id="shareJobEmailFrom" class="shareJobEmailInput" placeholder="Enter email you would like to recieve replies on" readonly>
+                                <div class="col-md-12 p-0">
+                                     <span class="error" ng-show="fromEmailErr == true">
+                                    Please enter the from email address
+                                </span>
+
+                                <span class="error" ng-show="errFromEmailAddress">
+                                    Please enter a valid email address
+                                </span>
+                        </div>
+                        <div class="shareJobEmailSeperator"></div>
+                    </div>
+                                <div class="col-md-12 p-0">
+                                <label class="shareJobEmailLabel">Subject:</label>
+                                <input type="text" class="shareJobEmailInput" ng-model="popularizeShareJobEmailsubject" id="shareJobEmailsubject" placeholder="">
+                                <div class="col-md-12 p-0">
+                                <span class="error" ng-show="errFromEmailSubject">
+                                    Please enter the email subject
+                                </span>
+                                 </div>
+                                 <div class="shareJobEmailSeperator"></div>
+                                  </div>
+			                   <!-- Email Content -->
+			                    <div class="col-md-12 p-0">
+                                <span class="glyphicon glyphicon-pencil pencilAlign" ng-click="shareJobEmailContentEdit();"></span>
+                                <div id="shareJobEmailContent" bind-html-compile="popularizeShareJobEmailContent"></div>
+                                </div>
+                                 </div>
+                                <!-- Modal Footer -->
+                                      <div class="modal-footer">
+                                    <button type="submit" class="waves-effect waves-light btn-success btn">Send Email</button>
+                                    <button type="button" class="waves-effect waves-light btn-success btn"
+                                            id="closeShareJobEmailPopup" data-dismiss="modal" data-ng-click="cancelInvites();">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="morej0bBtn" ng-show="hasMoreJobs && hasJobs == true">
+                    <a style="background-color: #5491CA;"
+                       class="search-btn real-btn" id="button1_apply_applybutton_osp1"
+                       name="Jobview Back Button" ng-click="moreJobs();">Show More {{$parent.referralMappings.uiTermMappings.jobs}}</a>
+                </div>
+
+                <div ng-show="noOfJobs == 0">
+                    <div class="col-lg-12">
+                        <p class="nojobtext">No jobs to display</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-3 p-0 pl-15">
+            <!--<div ng-show="moduleName == 'Referral' && $parent.referralMappings.uiTermMappings.showRank == 'true'" class="col-md-12 p-0 card-box">
+
+                <div class="centerElement">
+                    <div class="manage-box-circle responsive-circle">
+                        <div class="c100 p{{(employeeRank/totalRank)*100}} manage-box-circle-custom reponsive-profile">
+                            <span>
+                                <p style="margin-top: -30px;">
+                                    <i class="fa fa-sort-asc" aria-hidden="true" style="cursor: auto;"></i>
+                                </p>
+                                <p style="margin-top: -110px; font-weight: 800;">{{employeeRank}}</p>
+                                <p style="font-size: 16px; margin-top: -100px;">out of {{totalRank}}</p>
+                            </span>
+                            <div class="slice">
+                                <div class="bar"></div>
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <p class="text-align-row circleSectionText">
+                        Your rank in
+                        referrals among your colleague
+                    </p>
+                </div>
+            </div>-->
+            <!--<div ng-show="moduleName == 'Referral' && $parent.ERPointsEnable == 'Y'  && $parent.referralMappings.uiTermMappings.showRank == 'true'" id="sidebar">
+                <div class="row tinyHeader">How Referral Works</div>
+                <div class="row infoSection">
+                    <img src="images/Home_page.png" style="width: 100%;">
+                </div>
+            </div>-->
+            <div class="col-md-12 p-0 card-box" ng-if="isFilterEnable==true && jobFacetConfig.loadfacets.length>0">
+                <div class="facetUI managejobFacet">
+                    <div ng-if="ReferralRight"
+                         job-list-faceting-directive-es
+                         job-filter-criteria="jobFilterCriteria"
+                         job-facet-config="jobFacetConfig"
+                         job-list-heading-html="../../../../manage/angular-pages/jobFacetList.html"
+                         job-list-call-back="jobListCallBack(jobFilters,selectedFilterTags)"
+                         selected-filter-tags="selectedFilterTags"
+                         job-clear-function="jobClearFunction"
+                         selected-tag-free-text="selectedTagFreeText"
+                         all-fields="allFields"
+                         search-facet-bucket="searchFacetBucket"
+			 input="input">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="modal fade" id="uploadCvPopup" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true" tabindex='-1'>
+    <div class="modal-dialog customModalDialogInvite">
+    <div class="modal-content">
+    Modal Header
+    <div class="modal-header custom-modal-heder">
+    <img src="images/addpro.png" style="height: 25px;" /> <span
+    class="popUpMainTitle"> Upload Profile </span>
+    </div>
+
+    <div class="customInviteSubDiv">
+    <span class="customDialogTextNotifictn">Upload a profile for the following position: </span>
+
+
+    <div class="jobInfoForPopulariz customDialogJobDetails">
+    <span class="jobTitleinvite"style="text-transform: uppercase; font-weight: Bold;">{{jobTitle}}</span>|<span class="locationinvite">{{location}}</span><span class="experienceinvite" ng-if="experience">| {{experience}}</span>
+    </div>
+
+    </div>
+
+    Modal Body
+    <form class="form-horizontal uploadCustom" method="POST" name="form" role="form" ng-submit="saveUploadCv();">
+
+   <div vs-repeat class="addprofile-maindiv">
+
+ <div ng-repeat="data in getApplyFields" id="$index">
+
+    <div class="addprofile-input-field custom-add-profile1"
+    ng-class="{'custom-add-profile2': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17 )}">
+
+    <label
+    ng-class="{'custom-right-label': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}">
+    {{data.masterApplyFields.fieldName}} <span
+    ng-if="data.isMandatory=='Y' || data.masterApplyFields.fieldName =='Upload Resume'"
+    style="color: red;">*</span>
+    </label>
+    <input ng-if="data.masterApplyFields.fieldName =='Name'"
+    type="text" class="form-control"
+    ng-model="JobApplication.firstName" name="firstName" required
+    ng-pattern="/^(\D)+$/" placeholder="Name" ng-required="data.isMandatory=='Y'"/>
+
+    <input type="email"
+    class="form-control" ng-pattern="/^([\w-\.]+@([\w-]+\.)+[\w-]{2,25})?$/"
+    ng-if="data.masterApplyFields.fieldName =='Email'"
+    ng-model="JobApplication.emailId" name="emailId" required
+    placeholder="Email" ng-required="data.isMandatory=='Y'" />
+
+    <input type="text" ng-model="JobApplication.location" id="Autocomplete"
+       ng-keydown="blockSuggestion($event)" ng-autocomplete="JobApplication.location"
+       action="googleLocationNew()" details="details1" options="options1"
+       ng-if="data.masterApplyFields.fieldName == 'Current Location'"
+       source="loadTags($query)" class="form-control" placeholder="Location"
+       name="location" maxlength="238" ng-required="data.isMandatory=='Y'" />
+
+    <input type="text" class="form-control"
+    ng-if="data.masterApplyFields.fieldName == 'Total Experience (in years)'"
+    ng-model="JobApplication.experience" name="experience"
+    ng-pattern="/^[0-9]{1,7}(\.[0-9]+)?$/" maxlength="4"
+    placeholder="Experience in Years" ng-required="data.isMandatory=='Y'" />
+
+    <input
+    ng-if="data.masterApplyFields.fieldName == 'Phone Number'"
+    type="text" class="form-control" ng-model="JobApplication.phoneNo"
+    name="phoneNo" ng-pattern="/^([0-9\(\)\/\+ \-]*)$/" maxlength="16"
+    placeholder="Phone Number" ng-required="data.isMandatory=='Y'" />
+
+    <input type="text"
+    ng-model="JobApplication.noticedPeriod"
+    ng-if="data.masterApplyFields.fieldName == 'Notice Period'"
+    class="form-control" placeholder="Notice Period"
+    name="NoticedPeriod" ng-required="data.isMandatory=='Y'" />
+
+    <input type="text"
+    ng-model="JobApplication.currentCtc"
+    ng-if="data.masterApplyFields.fieldName == 'Current CTC'"
+    class="form-control" placeholder="Current CTC"
+    name="CurrentCTC" ng-required="data.isMandatory=='Y'" />
+
+    <input type="text"
+                        ng-model="JobApplication.expectedCtc"
+    ng-if="data.masterApplyFields.fieldName == 'Expected CTC'"
+    class="form-control" placeholder="Expected CTC"
+       name="ExpectedCTC" ng-required="data.isMandatory=='Y'" />
+
+    <input type="text"
+                        ng-model="JobApplication.reasonForLeaving"
+    ng-if="data.masterApplyFields.fieldName == 'Reason for Leaving'"
+    class="form-control" placeholder="Reason for Leaving"
+    name="ReasonforLeaving" ng-required="data.isMandatory=='Y'" />
+
+      <input type="text"
+                        ng-model="JobApplication.dateOfBirth"
+    ng-if="data.masterApplyFields.fieldName == 'Date of Birth'"
+    class="form-control" ng-pattern="/^(((((0[1-9])|(1\d)|(2[0-8]))-((0[1-9])|(1[0-2])))|((31-((0[13578])|(1[02])))|((29|30)-((0[1,3-9])|(1[0-2])))))-(([0-9][0-9][0-9][0-9]))|(29-02-20(([02468][048])|([13579][26]))))$/" placeholder="dd-mm-yyyy"
+    name="dateOfBirth" ng-required="data.isMandatory=='Y'" />
+
+     <input type="text" id="Autocomplete"
+       ng-keydown="blockSuggestion($event)" ng-autocomplete="JobApplication.preferredLocation"
+       action="googlePreferredLocation()" details="details1" options="options1"
+                        ng-model="JobApplication.preferredLocation" source="loadTags($query)"
+    ng-if="data.masterApplyFields.fieldName == 'Preferred Location'"
+    class="form-control" placeholder="Preferred Location"
+    name="preferredLocation" maxlength="238" ng-required="data.isMandatory=='Y'" />
+
+    <input type="text"
+                        ng-model="JobApplication.relevantExperience"
+    ng-if="data.masterApplyFields.fieldName == 'Relevant Experience'"
+    class="form-control" placeholder="Relevant Experience"
+    name="relevantExperience" ng-required="data.isMandatory=='Y'" />
+
+    <input type="text"
+                        ng-model="JobApplication.linkedInProfile"
+    ng-if="data.masterApplyFields.fieldName == 'LinkedIn Profile'"
+    class="form-control" ng-pattern="/linkedin/" placeholder="LinkedIn Profile"
+    name="linkedInProfile" ng-required="data.isMandatory=='Y'" />
+
+    <input type="text"
+                        ng-model="JobApplication.workProfile"
+    ng-if="data.masterApplyFields.fieldName == 'Work Profile URL'"
+    class="form-control" ng-pattern="/^(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/" placeholder="Work Profile URL"
+    name="workProfile" ng-required="data.isMandatory=='Y'" />
+
+    <input type="text"
+                        ng-model="JobApplication.highestEducationalQualification"
+    ng-if="data.masterApplyFields.fieldName == 'Highest Educational Qualification'"
+    class="form-control" placeholder="Highest Educational Qualification"
+    name="highestEducationalQualification" ng-required="data.isMandatory=='Y'" />
+
+                <input type="text"
+                        ng-model="JobApplication.coverLetter"
+    ng-if="data.masterApplyFields.fieldName == 'Cover Letter'"
+    class="form-control" placeholder="Cover Letter"
+    name="coverLetter" ng-required="data.isMandatory=='Y'" />
+
+                   <input ng-if="data.masterApplyFields.fieldName =='Upload Resume'"
+    type="text" size="50" ng-model="fileName" name="filename"
+    class="form-control" disabled placeholder="Upload Resume" ng-required="data.isMandatory=='Y'" style="padding-right: 52px;"/>
+    <span ng-show="data.masterApplyFields.fieldName =='Upload Resume'" style="color: #777;font-size: 12px;left: 43%;position: absolute;top: 0; width: 70%;">(File size should be <= 2MB)</span>
+    <span style='font-size: 88%;color: red;margin-left: 10%;    line-height: 2;display: block; position: absolute;'
+    class="custom-ap-err" ng-show="fileSizeExceededErr && filetype=='invalid' && data.masterApplyFields.fieldName =='Upload Resume'" >File size exceeds the allowed limit and invalid file format</span>
+    <span style='color: red;margin-left: 10%;    line-height: 2;display: block; position: absolute;'
+    class="custom-ap-err" ng-show="fileSizeExceededErr && filetype=='valid' && data.masterApplyFields.fieldName =='Upload Resume'" >{{fileSizeExceededErr}}</span>
+    <br ng-show="data.masterApplyFields.fieldName =='Upload Resume' && filetype=='invalid'">
+    <span style='color: red;    line-height: 2;display: block; position: absolute;'
+    class="custom-ap-err uploadresumealgnmnt" ng-show="filetype=='invalid' && fileSizeExceededErr==false && data.masterApplyFields.fieldName =='Upload Resume'" >Invalid File Format</span>
+    <span style='color: red; margin-left: 10%; display: block; position: absolute;'
+    class="custom-ap-err"
+    ng-show="resumeRequiredErr == 'yes' && data.masterApplyFields.fieldName =='Upload Resume'">
+    Resume is required </span>
+
+
+    <label for="fileUpload"
+    ng-if="data.masterApplyFields.fieldName =='Upload Resume'"
+    class="btn btn-theme btn-file uploadResumeStyle" id="title"
+    ng-class="{'right-upload': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"><img
+    src="images/uploadFile.png" /></label>
+
+    <input
+    ng-if="data.masterApplyFields.fieldName =='Upload Resume'"
+    type="file" name="fileUpload" value="test" style="display: none"
+    ng-model="JobApplication.resume" id="fileUpload"
+    onchange="angular.element(this).scope().setFileName(this);angular.element(this).scope().resumeParser();" />
+                <span  ng-class="{'error-right': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"
+    style='color: red'
+    ng-show="(form.firstName.$dirty || submitted) && form.firstName.$error.required && data.masterApplyFields.fieldName == 'Name'">
+    First name is required </span>
+                        <span style='color: red' ng-class="{'error-right': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"
+    ng-show="(form.firstName.$dirty || submitted) &&  form.firstName.$error.pattern && data.masterApplyFields.fieldName == 'Name'">
+    Please enter text only. </span>
+                        <span style='color: red' ng-class="{'error-right': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"
+    ng-show="(form.phoneNo.$dirty || submitted) && form.phoneNo.$error.pattern && data.masterApplyFields.fieldName =='Phone Number'">
+    Please enter only numbers. </span>
+                        <span ng-class="{'error-right': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"
+    style='color: red; display: block;'></span>
+    <span style='color: red' ng-class="{'error-right': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"
+    ng-show="(form.dateOfBirth.$dirty || submitted) && form.dateOfBirth.$error.pattern && data.masterApplyFields.fieldName =='Date of Birth'">
+    Please enter valid Date of Birth. </span>
+                        <span ng-class="{'error-right': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"
+    style='color: red; display: block;'	></span>
+    <span style='color: red' ng-class="{'error-right': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"
+    ng-show="(form.linkedInProfile.$dirty || submitted) && form.linkedInProfile.$error.pattern && data.masterApplyFields.fieldName =='LinkedIn Profile'">
+    Please enter valid Linkedin Profile URL. </span>
+                        <span ng-class="{'error-right': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"
+    style='color: red; display: block;'	></span>
+    <span style='color: red' ng-class="{'error-right': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"
+    ng-show="(form.workProfile.$dirty || submitted) && form.workProfile.$error.pattern && data.masterApplyFields.fieldName =='Work Profile URL'">
+    Please enter valid URL. </span>
+                        <span ng-class="{'error-right': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"
+    style='color: red; display: block;'
+    class="custom-ap-err"
+    ng-show="(form.experience.$dirty || submitted) && form.experience.$error.pattern && data.masterApplyFields.fieldName =='Total Experience (in years)'">
+    Invalid Value. </span>
+                         <span ng-class="{'error-right': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"
+    style='color: red; display: block;'
+    class="custom-ap-err"
+    ng-show="(form.emailId.$dirty || submitted) && form.emailId.$error.required && data.masterApplyFields.fieldName =='Email'">
+    Email is required </span>
+                        <span ng-class="{'error-right': ($index == 1 || $index == 3 || $index == 5 || $index == 7 || $index == 9 || $index == 11 || $index == 13 || $index == 15 || $index == 17)}"
+    style='color: red; display: block;'
+    class="custom-ap-err"
+    ng-show="(form.emailId.$dirty || submitted) &&  form.emailId.$error.pattern && data.masterApplyFields.fieldName =='Email'">
+    Invalid Email. </span>
+    </div>
+    </div>
+
+    <div class="emailCandidate">
+    <input type="checkbox" ng-model="sendNotification"
+    ng-checked="sendNotification == true" />Send notification to the
+    candidate
+    </div>
+    <div class="addProfileNCancel">
+    <input type="submit" value="Add Profile" ng-disabled="filetype=='invalid'"
+    class="btn btn-success btn-wide cust-savebtn">
+    <button type="button" class="btn btn-success btn-wide cust-savebtn customSrButton" id ="closeAddProfilePopup" data-dismiss="modal" data-ng-click="closeProfile();">
+    Cancel</button>
+    </div>
+    </div>
+    </form>
+
+    </div>
+    </div>
+</div> -->
+<!--Invite Candidates Popup  -->
+<div class="modal fade" id="inviteFriendsPopUp" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true" tabindex='-1'>
+    <div class="modal-dialog customModalDialogInvite inviteFriendspopup">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header custom-modal-heder">
+                <img src="images/invite-candidates-popup.png"
+                     style="height: 28px; width: 30px" /> <span class="popUpMainTitle">
+                    Invite Friends via Email
+                </span>
+            </div>
+
+            <!-- Modal Body -->
+            <form class="form-horizontal" method="POST" name="inviteFriendsForm"
+                  role="form" ng-submit="sendInviteFriendsEmail();">
+                <div class="modal-body" style="padding-top: 0px;">
+
+                    <div class="customInviteSubDiv">
+                        <span class="customDialogTextNotifictn">
+                            Send email invites
+                            to your friends to apply for this position.
+                        </span>
+                        <div class="jobInfoForPopulariz">
+                            <span class="jobTitleinvite" style="text-transform: uppercase; font-weight: Bold;">{{jobTitle}}</span>|<span class="locationinvite">{{location}}</span><span class="experienceinvite" ng-if="experience">| {{experience}}</span>
+                        </div>
+                        <div class="IniviteCandidateTextarea">
+
+                            <tags-input min-length="1"
+                                        placeholder="{{inviteCandidateTags.length ? '' :'Please enter email addresses of candidates you would like to invite (Please hit enter after typing each email address)'}}"
+                                        ng-class="{removePlaceholder:inviteCandidateTags.length}"
+                                        ng-model="inviteCandidateTags" on-tag-added="removeErrMsg($tag)"
+                                        class="inviteCandidateTagsCss" />
+
+                        </div>
+                        <span style='color: red'
+                              ng-show="emailErrInvitePopularize == true">
+                            Please enter
+                            atleast one email
+                        </span> <span style='color: red' ng-show="errEmailId">
+                            Please enter a valid email address
+                        </span> <a class="inviteCandidatePreviwBtn"
+                                   ng-click="inviteFriendsPreviewContent();">
+                            <img src="images/preview.png" /><span ng-show="!inviteFriendsEmailContent">Show Preview</span><span ng-show="inviteFriendsEmailContent">Hide Preview</span>
+                        </a>
+
+                        <div ng-cloak ng-hide="!inviteFriendsEmailContent"
+                             class="inViteCandidateEmailPrvwMainDiv">
+                            <label class="emailInivteSubjectLabel">Subject</label> <input type="text" ng-model="$parent.emailInivteSubject" value=""
+                                                                                          id="subjectEditContent" class="emailInivteSubjectInput"
+                                                                                          ng-disabled="button" ng-init="button=true" /> <a ng-click=" button = false ;inviteFriendsEmailSubjectEdit();"
+                                                                                                                                           id="subjectEditBtn" style="cursor: pointer;">
+                                <span class="glyphicon glyphicon-pencil prvwPencilSubject"></span>
+                            </a> <a ng-click="inviteFriendsEmailContentEdit();"
+                                    style="cursor: pointer;" id="emailContentEdt">
+                                <span class="glyphicon glyphicon-pencil popularizePrvwPencilContent"></span>
+                            </a>
+                            <div id="emailContent" bind-html-compile="emailInivteContent"
+                                 class="emailInivteContentDiv"></div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- Modal Footer -->
+                <div class="modal-footer"
+                     style="padding: 0px 22px 20px; margin-top: 0">
+
+                    <button type="submit"
+                            class="btn btn-success btn-wide cust-savebtn customSrButton customBtnInviPopCan">
+                        Send
+                        Invite
+                    </button>
+                    <button type="button"
+                            class="btn btn-success btn-wide cust-savebtn customSrButton customBtnInviPopCan"
+                            id="closeInviteFriendsPopup" data-dismiss="modal"
+                            data-ng-click="cancelInvites();">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- Content End -->
+
+<div class="zwayamFooterDashboard zwayamFooterloginpage"> Powered by <a target="_blank" href="https://zwayam.com"><img class="loginZwayamLogo" alt="" src="images/powered-by-zwayam.png" onload="loadImage()"></a></div>
